@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="rock" type="button" onclick="game()">start game</button>
+ 
+</body>
+<script>
+    const choices = ['rock', 'paper', 'scissors']
+    const winners =[];
+
+function game(){
+    for(let i = 1; i<=5; i++){
+        playRound(i); 
+    }
+    document.querySelector('button').textContent = "Play New Game";
+    logWins();
+   
+}
+
+function playRound(round){
+    const playerSelection = playerChoice();
+    const computerSelection = computerChoice();
+    const winner = checkWinner(playerSelection, computerSelection);
+    winners.push(winner);
+    logRound(playerSelection, computerSelection, winner, round)
+}
+
+function playerChoice () {
+    let input = prompt("Rock, Paper, or Scissors?");
+    while (input == null) {
+        input = prompt("Rock, Paper, or Scissors?");
+    }
+    input = input.toLowerCase(); 
+    let check = validateInput(input);
+    if (check == true){
+        console.log(input);
+    }
+     return input;    
+    }
+
+
+function computerChoice(){
+    return choices[Math.floor(Math.random()*choices.length)];
+
+}
+
+function validateInput(choice) {
+    return choices.includes(choice);
+}
+
+function checkWinner(choiceP, choiceC){
+    if(choiceP === choiceC){
+        return "Tie";
+    }else if (
+    (choiceP ==="paper" && choiceC == "scissors") ||
+    (choiceP === "paper" && choiceC == "rock") ||
+    (choiceP === "scissors" && choiceC == "paper") 
+    ) {
+        return "Player";
+    } else {
+        return "Computer";
+    }
+}
+
+function logWins(){
+    let playerWins = winners.filter((item) => item == "Player").length;
+    let computerWins = winners.filter((item) => item == "Computer").length; 
+    let ties = winners.filter((item) => item == "Tie").length;
+    console.log('Results:')
+    console.log('Player Wins:' ,playerWins);
+    console.log('Computer Wins:', computerWins);
+    console.log("Ties:", ties);
+    };
+
+    function logRound(playerChoice, computerChoice, winner, round){
+        console.log('Round:', round)
+        console.log('Player Chose:', computerChoice)
+        console.log('Computer Chose:', computerChoice)
+        console.log(winner, 'Won the Round')
+        console.log('-------------------------------')
+    }
+
+
+</script>
+</html>
