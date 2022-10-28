@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <p>Rock Paper Scissors</p>
+    </div>
+    <div> 2 out of 3 Wins</div>
+    <div> 
+    <button id='rock' type='button' onclick="chooseRock()">Rock</button>
+    <button id='paper' type='button' onclick="choosePaper()">Paper</button>
+            <button id='scissors' type='button' onclick="chooseScissors()">Scissors</button>
+    </div>
+</body>
+    <script>
+        var playerWin = 0; 
+        var computerWin = 0; 
+        var tie = 0;
+
+        function getComputerChoice(){ 
+    const randomChoice = Math.floor(Math.random() * 3); 
+ if ( randomChoice === 0){return ('rock')}
+    else if (randomChoice === 1){return ('paper')}
+    else if (randomChoice === 2){return ('scissors')}}; 
+
+        function chooseRock(){ 
+const computerSelection = getComputerChoice();
+const playerSelection = 'Rock';
+    if ( playerSelection === 'Rock' && computerSelection === 'rock'){alert ('Tie! Both chose rock!'), console.count('Tie'), tie +=1}
+     else if(playerSelection === 'Rock' && computerSelection === 'paper'){alert('Rock! Computer chose paper! Round lost!'), console.count('Computer Wins'), computerWin +=1}
+      else if(playerSelection === "Rock" && computerSelection === 'scissors'){alert('Rock! Computer chose scissors! Round won!'), console.count('Player Wins'), playerWin +=1 }
+      if (playerWin >= 2){alert('Congrats you win the game!'), winSpam(); window.location.reload();}
+      else if (computerWin >= 2){alert('Maybe next time, Computer won this game...'), loseSpam(); window.location.reload();}
+      else if ( computerWin === 1 && playerWin === 1){alert('Tiebraker round! Winner takes all!')}
+      }
+
+      function choosePaper(){
+        const computerSelection = getComputerChoice();
+        const playerSelection = 'Paper';
+        if (playerSelection === "Paper" && computerSelection === "paper"){alert('Tie! Both chose paper!'), console.count('Tie'), tie +=1}
+        else if (playerSelection === "Paper" && computerSelection === 'rock'){alert('Paper! Computer chose rock! Round won!'), console.count('Player Wins'), playerWin +=1;}
+        else if (playerSelection === "Paper" && computerSelection === 'scissors'){alert('Paper! Computer chose scissors! Round lost!'), console.count('Computer Wins'), computerWin += 1;}
+        if (playerWin >= 2){alert('Congrats you win the game!'), winSpam(); window.location.reload();}
+        else if (computerWin >= 2){alert('Maybe next time, Computer won this game...'), loseSpam(); window.location.reload()}
+        else if ( computerWin === 1 && playerWin === 1){alert('Tiebraker round! Winner takes all!')}
+       }
+
+      function chooseScissors(){
+        const computerSelection = getComputerChoice();
+        const playerSelection = 'Scissors';
+        if (playerSelection === "Scissors" && computerSelection ==="scissors"){alert('Tie! Both chose scissors!'),  console.count('Tie'), tie +=1}
+        else if(playerSelection === "Scissors" && computerSelection ==="paper"){alert("Scissors! Computer chose paper! Round won!"),  console.count('Player Wins'), playerWin +=1;}
+        else if(playerSelection === "Scissors" && computerSelection ==="rock"){alert("Scissors! Computer chose rock! Round lost!"),  console.count('Computer Wins'), computerWin +=1;}
+        if (playerWin >= 2){alert('Congrats you win the game!'), winSpam(); window.location.reload();}
+        else if (computerWin >= 2){alert('Maybe next time, Computer won this game...'), loseSpam(); window.location.reload();} 
+        else if (computerWin === 1 && playerWin === 1){alert('Tiebraker round! Winner takes all!')}
+      }
+        
+      
+      function gamePlayer(){
+        if (playerWin >= 2){alert('Congrats you win the game!')}
+        else if (computerWin >= 2){alert('Maybe next time, Computer won this game...')}
+      }
+
+      function winSpam(){
+        for ( i = 0; i < 1000; i++){
+            console.log(i + '-----------------You win--------------');
+        }
+      }
+
+      function loseSpam(){
+        for ( i = 0; i < 1000; i++){
+            console.log(i + '-----------------You lose--------------');
+        }
+      }
+
+    </script>
+    
+</body>
+</html>
