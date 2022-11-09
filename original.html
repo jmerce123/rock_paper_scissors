@@ -10,17 +10,21 @@
     <div>
         <p>Rock Paper Scissors</p>
     </div>
-    <div> 2 out of 3 Wins</div>
+    <div> first to 5 Wins </div>
     <div> 
     <button id='rock' type='button' onclick="chooseRock()">Rock</button>
     <button id='paper' type='button' onclick="choosePaper()">Paper</button>
             <button id='scissors' type='button' onclick="chooseScissors()">Scissors</button>
+    </div>
+    <div id = "result">
+
     </div>
 </body>
     <script>
         var playerWin = 0; 
         var computerWin = 0; 
         var tie = 0;
+
 
         function getComputerChoice(){ 
     const randomChoice = Math.floor(Math.random() * 3); 
@@ -31,40 +35,52 @@
         function chooseRock(){ 
 const computerSelection = getComputerChoice();
 const playerSelection = 'Rock';
+let result = ""
     if ( playerSelection === 'Rock' && computerSelection === 'rock'){alert ('Tie! Both chose rock!'), console.count('Tie'), tie +=1}
      else if(playerSelection === 'Rock' && computerSelection === 'paper'){alert('Rock! Computer chose paper! Round lost!'), console.count('Computer Wins'), computerWin +=1}
       else if(playerSelection === "Rock" && computerSelection === 'scissors'){alert('Rock! Computer chose scissors! Round won!'), console.count('Player Wins'), playerWin +=1 }
-      if (playerWin >= 2){alert('Congrats you win the game!'), winSpam(); window.location.reload();}
-      else if (computerWin >= 2){alert('Maybe next time, Computer won this game...'), loseSpam(); window.location.reload();}
-      else if ( computerWin === 1 && playerWin === 1){alert('Tiebraker round! Winner takes all!')}
+      if (playerWin >= 5){alert('Congrats you win the game!'), winSpam(); window.location.reload();}
+      else if (computerWin >= 5){alert('Maybe next time, Computer won this game...'), loseSpam(); window.location.reload();}
+      else if ( computerWin === 4 && playerWin === 4){alert('Tiebraker round! Winner takes all!')}
+      result = ("Player Score: " + playerWin + "<br>Computer Score: " + computerWin)
+      document.getElementById('result').innerHTML = result
+      return
       }
 
       function choosePaper(){
         const computerSelection = getComputerChoice();
         const playerSelection = 'Paper';
+        let result = ""
         if (playerSelection === "Paper" && computerSelection === "paper"){alert('Tie! Both chose paper!'), console.count('Tie'), tie +=1}
         else if (playerSelection === "Paper" && computerSelection === 'rock'){alert('Paper! Computer chose rock! Round won!'), console.count('Player Wins'), playerWin +=1;}
         else if (playerSelection === "Paper" && computerSelection === 'scissors'){alert('Paper! Computer chose scissors! Round lost!'), console.count('Computer Wins'), computerWin += 1;}
-        if (playerWin >= 2){alert('Congrats you win the game!'), winSpam(); window.location.reload();}
-        else if (computerWin >= 2){alert('Maybe next time, Computer won this game...'), loseSpam(); window.location.reload()}
-        else if ( computerWin === 1 && playerWin === 1){alert('Tiebraker round! Winner takes all!')}
+        if (playerWin >= 5){alert('Congrats you win the game!'), winSpam(); window.location.reload();}
+        else if (computerWin >= 5){alert('Maybe next time, Computer won this game...'), loseSpam(); window.location.reload()}
+        else if ( computerWin === 4 && playerWin === 4){alert('Tiebraker round! Winner takes all!')}
+        result = ("Player Score: " + playerWin + "<br>Computer Score: " + computerWin)
+        document.getElementById('result').innerHTML = result
+      return
        }
 
       function chooseScissors(){
         const computerSelection = getComputerChoice();
         const playerSelection = 'Scissors';
+        let result = ""
         if (playerSelection === "Scissors" && computerSelection ==="scissors"){alert('Tie! Both chose scissors!'),  console.count('Tie'), tie +=1}
         else if(playerSelection === "Scissors" && computerSelection ==="paper"){alert("Scissors! Computer chose paper! Round won!"),  console.count('Player Wins'), playerWin +=1;}
         else if(playerSelection === "Scissors" && computerSelection ==="rock"){alert("Scissors! Computer chose rock! Round lost!"),  console.count('Computer Wins'), computerWin +=1;}
-        if (playerWin >= 2){alert('Congrats you win the game!'), winSpam(); window.location.reload();}
-        else if (computerWin >= 2){alert('Maybe next time, Computer won this game...'), loseSpam(); window.location.reload();} 
-        else if (computerWin === 1 && playerWin === 1){alert('Tiebraker round! Winner takes all!')}
+        if (playerWin >= 5){alert('Congrats you win the game!'), winSpam(); window.location.reload();}
+        else if (computerWin >= 5){alert('Maybe next time, Computer won this game...'), loseSpam(); window.location.reload();} 
+        else if (computerWin === 4 && playerWin === 4){alert('Tiebraker round! Winner takes all!')}
+        result = ("Player Score: " + playerWin + "<br>Computer Score: " + computerWin)
+        document.getElementById('result').innerHTML = result
+      return
       }
         
       
       function gamePlayer(){
-        if (playerWin >= 2){alert('Congrats you win the game!')}
-        else if (computerWin >= 2){alert('Maybe next time, Computer won this game...')}
+        if (playerWin >= 5){alert('Congrats you win the game!')}
+        else if (computerWin >= 5){alert('Maybe next time, Computer won this game...')}
       }
 
       function winSpam(){
