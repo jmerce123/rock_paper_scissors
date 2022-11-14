@@ -7,8 +7,150 @@
     <title>Document</title>
 </head>
 <body>
+    <div>
+        <p>Rock Paper Scissors</p>
+    </div>
+    <div> first to 5 Wins </div>
+    <div></div>
+    <div id="computerSign">
+    First Round, Go!
+    </div>
+    <div id="playerSign">
+
+    </div>
+    <button class='button' type='button' onclick="chooseRock()">Rock</button>
+    <button class='button' type='button' onclick="choosePaper()">Paper</button>
+    <button class='button' type='button' onclick="chooseScissors()">Scissors</button>
+    </div>
+    <div id="play"></div>
+    <div id = "result">
+    </div>
+    <div id ="winLose"></div>
+    <div id ="replay">
+
+    </div>
+</body>
+    <script>
+        var playerWin = 0; 
+        var computerWin = 0; 
+        var tie = 0;
+
+
+        function getComputerChoice(){ 
+    const randomChoice = Math.floor(Math.random() * 3); 
+ if ( randomChoice === 0){return ('rock')}
+    else if (randomChoice === 1){return ('paper')}
+    else if (randomChoice === 2){return ('scissors')}}; 
+
+        function chooseRock(){ 
+const computerSelection = getComputerChoice();
+const playerSelection = 'Rock';
+let result = ""
+let play = ""
+let rock = "✊"
+let paper = "✋"
+let scissors = "✌"
+const playerSign = document.getElementById('playerSign')
+const computerSign = document.getElementById('computerSign')
+    if ( playerSelection === 'Rock' && computerSelection === 'rock'){document.getElementById('play').innerHTML='Tie!', document.getElementById('computerSign').innerHTML= "Comupter Choice: " + rock, document.getElementById('playerSign').innerHTML="Your Choice: " + rock
+      console.count('Tie'), tie +=1}
+     else if(playerSelection === 'Rock' && computerSelection === 'paper'){document.getElementById('play').innerHTML='Round lost!', document.getElementById('computerSign').innerHTML="Comupter Choice: " + paper, document.getElementById('playerSign').innerHTML="Your Choice: " + rock, console.count('Computer Wins'), computerWin +=1}
+      else if(playerSelection === "Rock" && computerSelection === 'scissors'){document.getElementById('play').innerHTML='Round won!', document.getElementById('computerSign').innerHTML="Comupter Choice: " + scissors,document.getElementById('playerSign').innerHTML="Your Choice: " + rock, console.count('Player Wins'), playerWin +=1 }
+      if (playerWin >= 5){document.getElementById('winLose').innerHTML = 'Congrats, you won!', document.querySelectorAll('.button').forEach(elem => {
+    elem.disabled = true;
+}); createRefresh(); }
+      else if (computerWin >= 5){document.getElementById('winLose').innerHTML = 'Maybe next time, Computer won this game...', document.querySelectorAll('.button').forEach(elem => {
+    elem.disabled = true;
+}); createRefresh(); }
+      else if ( computerWin === 4 && playerWin === 4){alert('Tiebraker round! Winner takes all!')}
+      result = ("Player Score: " + playerWin + "<br>Computer Score: " + computerWin)
+      document.getElementById('result').innerHTML = result
+      return
+     
+}
+      
+
+      function choosePaper(){
+        const computerSelection = getComputerChoice();
+        const playerSelection = 'Paper';
+        let result = "";
+        let play = ""
+        let rock = "✊"
+        let paper = "✋"
+        let scissors = "✌"
+        const playerSign = document.getElementById('playerSign')
+        const computerSign = document.getElementById('computerSign')
+        if (playerSelection === "Paper" && computerSelection === "paper"){document.getElementById('play').innerHTML='Tie!', document.getElementById('computerSign').innerHTML="Comupter Choice: " + paper, document.getElementById('playerSign').innerHTML="Your Choice: " + paper, console.count('Tie'), tie +=1}
+        else if (playerSelection === "Paper" && computerSelection === 'rock'){document.getElementById('play').innerHTML='Round won!', document.getElementById('computerSign').innerHTML="Comupter Choice: " + rock, document.getElementById('playerSign').innerHTML="Your Choice: " + paper, console.count('Player Wins'), playerWin +=1;}
+        else if (playerSelection === "Paper" && computerSelection === 'scissors'){document.getElementById('play').innerHTML='Round lost!', document.getElementById('computerSign').innerHTML="Comupter Choice: " + scissors, document.getElementById('playerSign').innerHTML="Your Choice: " + paper, console.count('Computer Wins'), computerWin += 1;}
+        if (playerWin >= 5){document.getElementById('play').innerHTML='Congrats you win the game!', document.querySelectorAll('.button').forEach(elem => {
+    elem.disabled = true;
+}); createRefresh();}
+        else if (computerWin >= 5){document.getElementById('play').innerHTML='Maybe next time, Computer won this game...', document.querySelectorAll('.button').forEach(elem => {
+    elem.disabled = true;
+}); createRefresh();}
+        else if ( computerWin === 4 && playerWin === 4){alert('Tiebraker round! Winner takes all!')}
+        result = ("Player Score: " + playerWin + "<br>Computer Score: " + computerWin)
+        document.getElementById('result').innerHTML = result
+      return
+       }
+
+      function chooseScissors(){
+        const refresh = document.getElementById("refresh")
+        const computerSelection = getComputerChoice();
+        const playerSelection = 'Scissors';
+        let result = ""
+        let play = ""
+        let rock = "✊"
+        let paper = "✋"
+        let scissors = "✌"
+        const playerSign = document.getElementById('playerSign')
+        const computerSign = document.getElementById('computerSign')
+        if (playerSelection === "Scissors" && computerSelection ==="scissors"){document.getElementById('play').innerHTML='Tie!', document.getElementById('computerSign').innerHTML="Comupter Choice: " + scissors, document.getElementById('playerSign').innerHTML="Your Choice: " + scissors, console.count('Tie'), tie +=1}
+        else if(playerSelection === "Scissors" && computerSelection ==="paper"){document.getElementById('play').innerHTML="Round won!", document.getElementById('computerSign').innerHTML="Comupter Choice: " + paper, document.getElementById('playerSign').innerHTML="Your Choice: " + scissors,  console.count('Player Wins'), playerWin +=1;}
+        else if(playerSelection === "Scissors" && computerSelection ==="rock"){document.getElementById('play').innerHTML="Round lost!", document.getElementById('computerSign').innerHTML="Comupter Choice: " + rock, document.getElementById('playerSign').innerHTML="Your Choice: " + scissors,  console.count('Computer Wins'), computerWin +=1;}
+        if (playerWin >= 5){document.getElementById('play').innerHTML='Congrats you win the game!', document.querySelectorAll('.button').forEach(elem => {
+    elem.disabled = true;
+     }); createRefresh();}
+        else if (computerWin >= 5){document.getElementById('play').innerHTML='Maybe next time, Computer won this game...', document.querySelectorAll('.button').forEach(elem => {
+    elem.disabled = true;}); createRefresh(); }
+        else if (computerWin === 4 && playerWin === 4){alert('Tiebraker round! Winner takes all!')}
+        result = ("Player Score: " + playerWin + "<br>Computer Score: " + computerWin)
+        document.getElementById('result').innerHTML = result
+      return
+      }
+        
+      
+      function gamePlayer(){
+        if (playerWin >= 5){alert('Congrats you win the game!')}
+        else if (computerWin >= 5){alert('Maybe next time, Computer won this game...')}
+      }
+
+      function winSpam(){
+        for ( i = 0; i < 1000; i++){
+            console.log(i + '-----------------You win--------------');
+        }
+      }
+
+      function loseSpam(){
+        for ( i = 0; i < 1000; i++){
+            console.log(i + '-----------------You lose--------------');
+        }
+      }
+
+      function createRefresh(){
+        const refresh = document.getElementById("refresh");
+        const button = document.createElement('button');
+        button.innerHTML="Play Again";
+        button.onclick = function(){
+        window.location.reload();
+      };
+        document.body.appendChild(button);
     
-    <script src="myscripts.js">
+      };
+
+
     </script>
+    
 </body>
 </html>
